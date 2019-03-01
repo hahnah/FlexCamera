@@ -15,6 +15,7 @@ class ViewController: UIViewController, FlexibleAVCaptureDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.checkCameraAuthorization()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -39,6 +40,7 @@ class ViewController: UIViewController, FlexibleAVCaptureDelegate {
     }
     
     internal func didCapture(withFileURL fileURL: URL) {
+        // check whether photo library access is authorized
         if PHPhotoLibrary.authorizationStatus() != .authorized {
             PHPhotoLibrary.requestAuthorization { status in
                 if status == .authorized {
@@ -61,6 +63,32 @@ class ViewController: UIViewController, FlexibleAVCaptureDelegate {
             }
         } else {
             self.saveMovieToPhotoLibrary(fromURL: fileURL)
+        }
+    }
+    
+    private func checkCameraAuthorization() {
+        if AVCaptureDevice.authorizationStatus(for: .video) != .authorized {
+            AVCaptureDevice.requestAccess(for: .video, completionHandler: { isPermitted in
+                if isPermitted {
+                    self.flexibleAVCaptureVC =  FlexibleAVCaptureViewController(cameraPosition: .back)
+                } else {
+                    let title: String = "Failed to access camera"
+                    let message: String = "Allow this app to access camera."
+                    let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+                    let settingsAction = UIAlertAction(title: "Settings", style: .default, handler: { (_) -> Void in
+                        guard let settingsURL = URL(string: UIApplication.openSettingsURLString ) else {
+                            return
+                        }
+                        UIApplication.shared.open(settingsURL, options: [:], completionHandler: nil)
+                    })
+                    let closeAction: UIAlertAction = UIAlertAction(title: "Close", style: .cancel, handler: nil)
+                    alert.addAction(settingsAction)
+                    alert.addAction(closeAction)
+                    self.present(alert, animated: true, completion: nil)
+                }
+            })
+        } else {
+            self.flexibleAVCaptureVC =  FlexibleAVCaptureViewController(cameraPosition: .back)
         }
     }
     
