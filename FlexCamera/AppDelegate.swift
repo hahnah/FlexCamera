@@ -2,7 +2,6 @@
 //  AppDelegate.swift
 //  FlexCamera
 //
-//  Created by Natsuki HARAI on 2019/03/01.
 //  Copyright © 2019年 hahnah. All rights reserved.
 //
 

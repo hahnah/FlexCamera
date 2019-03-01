@@ -12,9 +12,11 @@
 		1FB25CE92229171D001BE695 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FB25CE72229171D001BE695 /* Main.storyboard */; };
 		1FB25CEB2229171D001BE695 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FB25CEA2229171D001BE695 /* Assets.xcassets */; };
 		1FB25CEE2229171D001BE695 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FB25CEC2229171D001BE695 /* LaunchScreen.storyboard */; };
+		BE2AF18FE818D93B15799F7D /* Pods_FlexCamera.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C4D262E103B3FBFA583DDC1 /* Pods_FlexCamera.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C4D262E103B3FBFA583DDC1 /* Pods_FlexCamera.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlexCamera.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FB25CE02229171D001BE695 /* FlexCamera.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlexCamera.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FB25CE32229171D001BE695 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1FB25CE52229171D001BE695 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +24,8 @@
 		1FB25CEA2229171D001BE695 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1FB25CED2229171D001BE695 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1FB25CEF2229171D001BE695 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6273515A22099E432EB2D9FE /* Pods-FlexCamera.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlexCamera.debug.xcconfig"; path = "Target Support Files/Pods-FlexCamera/Pods-FlexCamera.debug.xcconfig"; sourceTree = "<group>"; };
+		C2390C2C6602BDD976636F4A /* Pods-FlexCamera.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlexCamera.release.xcconfig"; path = "Target Support Files/Pods-FlexCamera/Pods-FlexCamera.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +33,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE2AF18FE818D93B15799F7D /* Pods_FlexCamera.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		14DCB35A1D066F1B7D18EED4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0C4D262E103B3FBFA583DDC1 /* Pods_FlexCamera.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		1FB25CD72229171C001BE695 = {
 			isa = PBXGroup;
 			children = (
 				1FB25CE22229171D001BE695 /* FlexCamera */,
 				1FB25CE12229171D001BE695 /* Products */,
+				84A1D406EB2D8043CB60B044 /* Pods */,
+				14DCB35A1D066F1B7D18EED4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,6 +79,15 @@
 			path = FlexCamera;
 			sourceTree = "<group>";
 		};
+		84A1D406EB2D8043CB60B044 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6273515A22099E432EB2D9FE /* Pods-FlexCamera.debug.xcconfig */,
+				C2390C2C6602BDD976636F4A /* Pods-FlexCamera.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -71,9 +95,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1FB25CF22229171D001BE695 /* Build configuration list for PBXNativeTarget "FlexCamera" */;
 			buildPhases = (
+				3059BF2B363360899635B88E /* [CP] Check Pods Manifest.lock */,
 				1FB25CDC2229171D001BE695 /* Sources */,
 				1FB25CDD2229171D001BE695 /* Frameworks */,
 				1FB25CDE2229171D001BE695 /* Resources */,
+				6D499417D196D6C3EBB5720D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -129,6 +155,53 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3059BF2B363360899635B88E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FlexCamera-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6D499417D196D6C3EBB5720D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FlexCamera/Pods-FlexCamera-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/FlexibleAVCapture/FlexibleAVCapture.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FlexibleAVCapture.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FlexCamera/Pods-FlexCamera-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1FB25CDC2229171D001BE695 /* Sources */ = {
@@ -280,9 +353,11 @@
 		};
 		1FB25CF32229171D001BE695 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6273515A22099E432EB2D9FE /* Pods-FlexCamera.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = FlexCamera/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -297,9 +372,11 @@
 		};
 		1FB25CF42229171D001BE695 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C2390C2C6602BDD976636F4A /* Pods-FlexCamera.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = FlexCamera/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

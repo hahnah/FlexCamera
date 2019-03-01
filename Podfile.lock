@@ -1,0 +1,16 @@
+PODS:
+  - FlexibleAVCapture (2.0.0)
+
+DEPENDENCIES:
+  - FlexibleAVCapture
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - FlexibleAVCapture
+
+SPEC CHECKSUMS:
+  FlexibleAVCapture: 908fce76d308c545da08f5bfbe739476864e2378
+
+PODFILE CHECKSUM: 12c5fe33f26b278fc48eeb37f455e80d679b07e3
+
+COCOAPODS: 1.6.1
