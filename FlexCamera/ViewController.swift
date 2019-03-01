@@ -15,7 +15,10 @@ class ViewController: UIViewController, FlexibleAVCaptureDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.checkCameraAuthorization()
+        self.checkCameraAuthorization(completion: {
+            self.flexibleAVCaptureVC =  FlexibleAVCaptureViewController(cameraPosition: .back)
+            
+        })
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -66,11 +69,11 @@ class ViewController: UIViewController, FlexibleAVCaptureDelegate {
         }
     }
     
-    private func checkCameraAuthorization() {
+    private func checkCameraAuthorization(completion: (() -> ())?) {
         if AVCaptureDevice.authorizationStatus(for: .video) != .authorized {
             AVCaptureDevice.requestAccess(for: .video, completionHandler: { isPermitted in
                 if isPermitted {
-                    self.flexibleAVCaptureVC =  FlexibleAVCaptureViewController(cameraPosition: .back)
+                    completion?()
                 } else {
                     let title: String = "Failed to access camera"
                     let message: String = "Allow this app to access camera."
@@ -88,7 +91,7 @@ class ViewController: UIViewController, FlexibleAVCaptureDelegate {
                 }
             })
         } else {
-            self.flexibleAVCaptureVC =  FlexibleAVCaptureViewController(cameraPosition: .back)
+            completion?()
         }
     }
     
