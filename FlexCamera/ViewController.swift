@@ -11,7 +11,7 @@ import Photos
 
 class ViewController: UIViewController, FlexibleAVCaptureDelegate {
     
-    let flexibleAVCaptureVC: FlexibleAVCaptureViewController = FlexibleAVCaptureViewController(cameraPosition: .back)
+    var flexibleAVCaptureVC: FlexibleAVCaptureViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,22 +20,51 @@ class ViewController: UIViewController, FlexibleAVCaptureDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        self.flexibleAVCaptureVC.delegate = self
+        self.flexibleAVCaptureVC?.delegate = self
         
-        self.flexibleAVCaptureVC.maximumRecordDuration = CMTimeMake(value: 60, timescale: 1)
-        self.flexibleAVCaptureVC.minimumFrameRatio = 0.16
-        if self.flexibleAVCaptureVC.canSetVideoQuality(.high) {
-            self.flexibleAVCaptureVC.setVideoQuality(.high)
+        self.flexibleAVCaptureVC?.maximumRecordDuration = CMTimeMake(value: 60, timescale: 1)
+        self.flexibleAVCaptureVC?.minimumFrameRatio = 0.16
+        if self.flexibleAVCaptureVC?.canSetVideoQuality(.high) ?? false {
+            self.flexibleAVCaptureVC?.setVideoQuality(.high)
         }
         
-        self.present(flexibleAVCaptureVC, animated: true, completion: nil)
+        if let flexibleAVCVC = self.flexibleAVCaptureVC {
+            self.present(flexibleAVCVC, animated: true, completion: nil)
+        }
+        
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-    func didCapture(withFileURL fileURL: URL) {
+    internal func didCapture(withFileURL fileURL: URL) {
+        if PHPhotoLibrary.authorizationStatus() != .authorized {
+            PHPhotoLibrary.requestAuthorization { status in
+                if status == .authorized {
+                    self.saveMovieToPhotoLibrary(fromURL: fileURL)
+                } else if status == .denied {
+                    let title: String = "Failed to save movie"
+                    let message: String = "Allow this app to access Photo Library."
+                    let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+                    let settingsAction = UIAlertAction(title: "Settings", style: .default, handler: { (_) -> Void in
+                        guard let settingsURL = URL(string: UIApplication.openSettingsURLString ) else {
+                            return
+                        }
+                        UIApplication.shared.open(settingsURL, options: [:], completionHandler: nil)
+                    })
+                    let closeAction: UIAlertAction = UIAlertAction(title: "Close", style: .cancel, handler: nil)
+                    alert.addAction(settingsAction)
+                    alert.addAction(closeAction)
+                    self.present(alert, animated: true, completion: nil)
+                }
+            }
+        } else {
+            self.saveMovieToPhotoLibrary(fromURL: fileURL)
+        }
+    }
+    
+    private func saveMovieToPhotoLibrary(fromURL fileURL: URL) {
         PHPhotoLibrary.shared().performChanges({
             PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: fileURL)
         }) { saved, error in
@@ -45,7 +74,7 @@ class ViewController: UIViewController, FlexibleAVCaptureDelegate {
                 let message = success ? "Movie saved." : "Failed to save movie."
                 let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil))
-                self.flexibleAVCaptureVC.present(alert, animated: true, completion: nil)
+                self.flexibleAVCaptureVC?.present(alert, animated: true, completion: nil)
             }
         }
     }
