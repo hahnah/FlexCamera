@@ -50,7 +50,7 @@ class ViewController: UIViewController, FlexibleAVCaptureDelegate {
                     let closeAction: UIAlertAction = UIAlertAction(title: "Close", style: .cancel, handler: nil)
                     alert.addAction(settingsAction)
                     alert.addAction(closeAction)
-                    self.present(alert, animated: true, completion: nil)
+                    self.flexibleAVCaptureVC?.present(alert, animated: true, completion: nil)
                 }
             }
         } else {
