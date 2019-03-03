@@ -1,16 +1,16 @@
 PODS:
-  - FlexibleAVCapture (2.0.0)
+  - FlexibleAVCapture (2.1.0)
 
 DEPENDENCIES:
-  - FlexibleAVCapture
+  - FlexibleAVCapture (~> 2.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - FlexibleAVCapture
 
 SPEC CHECKSUMS:
-  FlexibleAVCapture: 908fce76d308c545da08f5bfbe739476864e2378
+  FlexibleAVCapture: 1c582ecf33740417d31db6f10cd03f7fd107732d
 
-PODFILE CHECKSUM: 12c5fe33f26b278fc48eeb37f455e80d679b07e3
+PODFILE CHECKSUM: 09a6efeaacb47929a9c5174b6d01896e50104a70
 
 COCOAPODS: 1.6.1

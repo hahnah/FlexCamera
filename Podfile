@@ -6,6 +6,6 @@ target 'FlexCamera' do
   use_frameworks!
 
   # Pods for FlexCamera
-  pod 'FlexibleAVCapture'
+  pod 'FlexibleAVCapture', '~> 2.0'
 
 end
