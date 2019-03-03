@@ -26,8 +26,6 @@
 	<string>This app accesses microphone to record movies.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>This app accesses Photo Library to record movies.</string>
-	<key>UILaunchStoryboardName</key>
-	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
