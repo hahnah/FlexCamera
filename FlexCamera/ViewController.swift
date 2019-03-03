@@ -38,19 +38,21 @@ class ViewController: UIViewController, FlexibleAVCaptureDelegate {
                 if status == .authorized {
                     self.saveMovieToPhotoLibrary(fromURL: fileURL)
                 } else if status == .denied {
-                    let title: String = "Failed to save movie"
-                    let message: String = "Allow this app to access Photo Library."
-                    let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-                    let settingsAction = UIAlertAction(title: "Settings", style: .default, handler: { (_) -> Void in
-                        guard let settingsURL = URL(string: UIApplication.openSettingsURLString ) else {
-                            return
-                        }
-                        UIApplication.shared.open(settingsURL, options: [:], completionHandler: nil)
-                    })
-                    let closeAction: UIAlertAction = UIAlertAction(title: "Close", style: .cancel, handler: nil)
-                    alert.addAction(settingsAction)
-                    alert.addAction(closeAction)
-                    self.flexibleAVCaptureVC?.present(alert, animated: true, completion: nil)
+                    DispatchQueue.main.async {
+                        let title: String = "Failed to save movie"
+                        let message: String = "Allow this app to access Photo Library."
+                        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+                        let settingsAction = UIAlertAction(title: "Settings", style: .default, handler: { (_) -> Void in
+                            guard let settingsURL = URL(string: UIApplication.openSettingsURLString ) else {
+                                return
+                            }
+                            UIApplication.shared.open(settingsURL, options: [:], completionHandler: nil)
+                        })
+                        let closeAction: UIAlertAction = UIAlertAction(title: "Close", style: .cancel, handler: nil)
+                        alert.addAction(settingsAction)
+                        alert.addAction(closeAction)
+                        self.flexibleAVCaptureVC?.present(alert, animated: true, completion: nil)
+                    }
                 }
             }
         } else {
@@ -59,15 +61,17 @@ class ViewController: UIViewController, FlexibleAVCaptureDelegate {
     }
     
     private func setupFlexibleAVCaptureView() {
-        self.flexibleAVCaptureVC =  FlexibleAVCaptureViewController(cameraPosition: .back)
-        self.flexibleAVCaptureVC?.delegate = self
-        self.flexibleAVCaptureVC?.minimumFrameRatio = 0.16
-        if self.flexibleAVCaptureVC?.canSetVideoQuality(.high) ?? false {
-            self.flexibleAVCaptureVC?.setVideoQuality(.high)
-        }
-        
-        if let flexibleAVCVC = self.flexibleAVCaptureVC {
-            self.present(flexibleAVCVC, animated: true, completion: nil)
+        DispatchQueue.main.async {
+            self.flexibleAVCaptureVC =  FlexibleAVCaptureViewController(cameraPosition: .back)
+            self.flexibleAVCaptureVC?.delegate = self
+            self.flexibleAVCaptureVC?.minimumFrameRatio = 0.16
+            if self.flexibleAVCaptureVC?.canSetVideoQuality(.high) ?? false {
+                self.flexibleAVCaptureVC?.setVideoQuality(.high)
+            }
+            
+            if let flexibleAVCVC = self.flexibleAVCaptureVC {
+                self.present(flexibleAVCVC, animated: true, completion: nil)
+            }
         }
     }
     
@@ -77,19 +81,21 @@ class ViewController: UIViewController, FlexibleAVCaptureDelegate {
                 if isPermitted {
                     completion?()
                 } else {
-                    let title: String = "Failed to access camera"
-                    let message: String = "Allow this app to access camera."
-                    let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-                    let settingsAction = UIAlertAction(title: "Settings", style: .default, handler: { (_) -> Void in
-                        guard let settingsURL = URL(string: UIApplication.openSettingsURLString ) else {
-                            return
-                        }
-                        UIApplication.shared.open(settingsURL, options: [:], completionHandler: nil)
-                    })
-                    let closeAction: UIAlertAction = UIAlertAction(title: "Close", style: .cancel, handler: nil)
-                    alert.addAction(settingsAction)
-                    alert.addAction(closeAction)
-                    self.present(alert, animated: true, completion: nil)
+                    DispatchQueue.main.async {
+                        let title: String = "Failed to access camera"
+                        let message: String = "Allow this app to access camera."
+                        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+                        let settingsAction = UIAlertAction(title: "Settings", style: .default, handler: { (_) -> Void in
+                            guard let settingsURL = URL(string: UIApplication.openSettingsURLString ) else {
+                                return
+                            }
+                            UIApplication.shared.open(settingsURL, options: [:], completionHandler: nil)
+                        })
+                        let closeAction: UIAlertAction = UIAlertAction(title: "Close", style: .cancel, handler: nil)
+                        alert.addAction(settingsAction)
+                        alert.addAction(closeAction)
+                        self.present(alert, animated: true, completion: nil)
+                    }
                 }
             })
         } else {
@@ -103,19 +109,21 @@ class ViewController: UIViewController, FlexibleAVCaptureDelegate {
                 if isPermitted {
                     completion?()
                 } else {
-                    let title: String = "Failed to access microphone"
-                    let message: String = "Allow this app to access microphone."
-                    let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-                    let settingsAction = UIAlertAction(title: "Settings", style: .default, handler: { (_) -> Void in
-                        guard let settingsURL = URL(string: UIApplication.openSettingsURLString ) else {
-                            return
-                        }
-                        UIApplication.shared.open(settingsURL, options: [:], completionHandler: nil)
-                    })
-                    let closeAction: UIAlertAction = UIAlertAction(title: "Close", style: .cancel, handler: nil)
-                    alert.addAction(settingsAction)
-                    alert.addAction(closeAction)
-                    self.present(alert, animated: true, completion: nil)
+                    DispatchQueue.main.async {
+                        let title: String = "Failed to access microphone"
+                        let message: String = "Allow this app to access microphone."
+                        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+                        let settingsAction = UIAlertAction(title: "Settings", style: .default, handler: { (_) -> Void in
+                            guard let settingsURL = URL(string: UIApplication.openSettingsURLString ) else {
+                                return
+                            }
+                            UIApplication.shared.open(settingsURL, options: [:], completionHandler: nil)
+                        })
+                        let closeAction: UIAlertAction = UIAlertAction(title: "Close", style: .cancel, handler: nil)
+                        alert.addAction(settingsAction)
+                        alert.addAction(closeAction)
+                        self.present(alert, animated: true, completion: nil)
+                    }
                 }
             })
         } else {
