@@ -61,7 +61,6 @@ class ViewController: UIViewController, FlexibleAVCaptureDelegate {
     private func setupFlexibleAVCaptureView() {
         self.flexibleAVCaptureVC =  FlexibleAVCaptureViewController(cameraPosition: .back)
         self.flexibleAVCaptureVC?.delegate = self
-        self.flexibleAVCaptureVC?.maximumRecordDuration = CMTimeMake(value: 60, timescale: 1)
         self.flexibleAVCaptureVC?.minimumFrameRatio = 0.16
         if self.flexibleAVCaptureVC?.canSetVideoQuality(.high) ?? false {
             self.flexibleAVCaptureVC?.setVideoQuality(.high)
