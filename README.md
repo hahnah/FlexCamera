@@ -1,6 +1,8 @@
 # FlexCamera
 
-Source code of Flex Camera app for iOS.
+Source code of [Flex Camera](https://itunes.apple.com/us/app/flex-camera/id1455345286?mt=8) app for iOS.
+
+<a href="https://itunes.apple.com/us/app/flex-camera/id1455345286?mt=8" style="display:inline-block;overflow:hidden;background:url(https://linkmaker.itunes.apple.com/en-us/badge-lrg.svg?releaseDate=2019-03-10&kind=iossoftware&bubble=ios_apps) no-repeat;width:135px;height:40px;"></a>
 
 ## Screenshots
 
