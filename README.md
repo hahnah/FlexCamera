@@ -8,7 +8,7 @@ Source code of [Flex Camera](https://itunes.apple.com/us/app/flex-camera/id14553
 
 | | | | |
 |-|-|-|-|
-|![full](screenshots/5.8"/full.png) |![square](screenshots/5.8"/square.png) |![tall](screenshots/5.8"/tall.png) |![wide](screenshots/5.8"/wide.png)
+|![full](screenshots/5.8"/full.jpg) |![square](screenshots/5.8"/square.jpg) |![tall](screenshots/5.8"/tall.jpg) |![wide](screenshots/5.8"/wide.jpg)
 
 ## Dependencies
 
