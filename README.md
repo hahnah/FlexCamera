@@ -14,7 +14,7 @@ Source code of [Flex Camera](https://itunes.apple.com/us/app/flex-camera/id14553
 
 This project depends on following CocoaPods library.
 
-+ [FlexibleAVCapture](https://cocoapods.org/pods/FlexibleAVCapture) 2.1.0
++ [FlexibleAVCapture](https://cocoapods.org/pods/FlexibleAVCapture) 2.2.3
 
 Running following command will install dependency.
 
