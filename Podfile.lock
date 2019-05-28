@@ -1,5 +1,5 @@
 PODS:
-  - FlexibleAVCapture (2.2.3)
+  - FlexibleAVCapture (2.2.5)
 
 DEPENDENCIES:
   - FlexibleAVCapture (~> 2.0)
@@ -9,7 +9,7 @@ SPEC REPOS:
     - FlexibleAVCapture
 
 SPEC CHECKSUMS:
-  FlexibleAVCapture: 16d7f4561f8c26e93fe22416953c3d6e7c2f8146
+  FlexibleAVCapture: 0e24d80f5dc48b77604613bdca39eed32222e881
 
 PODFILE CHECKSUM: 09a6efeaacb47929a9c5174b6d01896e50104a70
 
