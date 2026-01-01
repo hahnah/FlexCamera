@@ -70,6 +70,7 @@ class ViewController: UIViewController, FlexibleAVCaptureDelegate {
             }
             
             if let flexibleAVCVC = self.flexibleAVCaptureVC {
+                flexibleAVCVC.modalPresentationStyle = .fullScreen
                 self.present(flexibleAVCVC, animated: true, completion: nil)
             }
         }
